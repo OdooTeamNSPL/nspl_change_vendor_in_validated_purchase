@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_change_vendor_wizard,access.change.vendor.wizard,model_change_vendor_wizard,nspl_change_vendor_in_validated_purchase.group_change_partner_po,1,1,1,1
