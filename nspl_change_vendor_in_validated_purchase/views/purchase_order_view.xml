@@ -10,8 +10,9 @@
                         string="Change Vendor"
                         type="object"
                         class="oe_highlight"
-                        groups="nspl_change_vendor_in_validated_purchase.group_change_partner_po"/>
-                        invisible="state not in ('purchase','done')"/>
+                        groups="nspl_change_vendor_in_validated_purchase.group_change_partner_po"
+                        invisible="[( 'state', 'not in', ('purchase','done') )]"/>
+
             </xpath>
         </field>
     </record>

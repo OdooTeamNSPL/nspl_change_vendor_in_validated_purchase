@@ -1,6 +1,7 @@
 {
     'name': 'Change Vendor in Validated Purchase',
-    'version': '18.0',
+    'version': '19.0.1',
+    'category': 'Purchase',
     'summary': 'Allow changing vendor in validated purchase orders with group access',
     'description': """
     Allows changing the vendor in validated purchase orders with proper access control. 

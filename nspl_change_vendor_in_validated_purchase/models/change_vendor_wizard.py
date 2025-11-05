@@ -17,13 +17,16 @@ class ChangeVendorWizard(models.TransientModel):
         if not purchase:
             return {'type': 'ir.actions.act_window_close'}
 
+        # Update Purchase Order Vendor
         purchase.write({'partner_id': self.partner_id.id})
 
+        # Update associated Receipts
         receipts = self.env['stock.picking'].search([('purchase_id', '=', purchase.id)])
         receipts.write({'partner_id': self.partner_id.id})
 
+        # Update associated Bills (Vendor Bills)
         bills = self.env['account.move'].search([
-            ('purchase_id', '=', purchase.id),
+            ('invoice_origin', '=', purchase.name),
             ('move_type', '=', 'in_invoice')
         ])
 
@@ -57,6 +60,7 @@ class ChangeVendorWizard(models.TransientModel):
 
             bill.line_ids.write({'partner_id': self.partner_id.id})
 
+        # Update related Payments
         payments = self.env['account.payment'].search([('move_id', 'in', bills.ids)])
         for payment in payments:
             was_posted = payment.state == 'posted'
